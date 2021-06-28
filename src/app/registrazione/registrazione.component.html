@@ -1,0 +1,92 @@
+<html>
+
+<head></head>
+
+<body>
+    <div class="container">
+        <div class="row align-items-center">
+                <div class="col-md-6 text-white">
+                    <h1 class="text-center">TEAM UP</h1>
+                    <p>Un sistema che permette agli utenti di esporre le loro idee ad un ingente numero di
+                    persone, in modo tale da trovare un team con le abilità necessarie per realizzarle.</p>
+                </div>
+            <div class="col-md-6">
+
+                <form (ngSubmit)="registrazione()">
+ 
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white">Nome*</label>
+                        <input type="text" class="form-control" id="InputNome" placeholder="Inserisci Nome" name="nome"
+                            required [(ngModel)]="teamMate.nome">
+
+                    </div>
+
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white">Cognome*</label>
+                        <input type="text" class="form-control" id="InputCognome" placeholder="Inserisci Cognome"
+                            name="cognome" required [(ngModel)]="teamMate.cognome">
+
+                    </div>
+
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white" for="email">Email*</label>
+                        <input type="email" class="form-control" id="InputEmail" placeholder="Inserisci Email"
+                            name="email" required [(ngModel)]="teamMate.email">
+
+                    </div>
+
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white">Numero di telefono</label>
+                        <input type="text" class="form-control" id="InputNumero" placeholder="Inserisci Numero"
+                            name="numero_telefono" required [(ngModel)]="teamMate.numero_telefono">
+
+                    </div>
+
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white">Città*</label>
+                        <input type="text" class="form-control" id="InputCittà" placeholder="Inserisci Città"
+                            name="citta" required [(ngModel)]="teamMate.citta">
+
+                    </div>
+
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white">Password*</label>
+                        <input type="password" class="form-control" id="InputPassword" placeholder="Inserisci Password"
+                            name="password" required [(ngModel)]="teamMate.password">
+
+                    </div>
+
+                    <div class="form-group w-50 mx-auto">
+
+                        <label class="text-white">Conferma Password*</label>
+                        <input type="password" class="form-control" id="InputConfPassword"
+                            placeholder="Inserisci Conferma Password" name="confPassword" required
+                            [(ngModel)]="teamMate.confPassword">
+
+                    </div>
+
+                    <div class="mx-auto w-50">
+                        <button type="submit" class="btn btn-primary">Registrati</button>
+                    </div>
+
+                    <div class="mx-auto w-50">
+                        <a routerLink="/login" routerLinkActive="active">Sei già registrato? Accedi</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,151 @@
+<html>
+
+<head></head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 text-white">
+
+                <div class="card" style="width: 150px; height: 150px;">
+
+                    <img class="card-img-top" src="https://us.123rf.com/450wm/mialima/mialima1603/mialima160300025/55096766-icona-utente-maschile-isolato-su-uno-sfondo-bianco-conto-avatar-per-il-web-user-immagine-del-profilo.jpg?ver=6">
+
+                </div>
+
+                <h3>SKILLS</h3>
+
+                <textarea bind-disabled="isDisabled" rows="6" cols="25" type="text" style="color: black;"
+                    placeholder="Modifica con una beve descrizione" name="descrizione" required
+                    [(ngModel)]="teamMate.descrizione">
+                </textarea>
+
+            </div>
+
+            <div class="col-md-8 mx-auto">
+
+                <div class="row">
+
+                    <div class="col-md-8">
+                        <h2 class="text-white">{{teamMate.nome}} {{teamMate.cognome}}</h2>
+                    </div>
+
+                    <div class="col-md-4 ml-auto">
+
+                        <div *ngIf="aggProgetto==true" class="col-md-8 ml-auto">
+                            <button type="button" class="btn btn-secondary" (click)="statoProgetto()">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Progetto</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                <!-- Nav tabs -->
+                <ul *ngIf="aggProgetto==true" class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#informazioni">Informazioni</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false">Progetti</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item nav-link" data-toggle="tab" href="#teamMate">Team mate</a>
+                            <a class="dropdown-item nav-link" data-toggle="tab" href="#teamLeader">Team leader</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <br>
+
+
+                <!-- Tab panes -->
+                <div *ngIf="aggProgetto==true" class="tab-content">
+                    <!-- Aggiungere qui altri contenuti dei tab -->
+                    
+                    <div class="tab-pane container" id="teamLeader">
+                        <app-riepilogo-progetto></app-riepilogo-progetto>
+                    </div>
+
+                    <div class="tab-pane container" id="teamMate">
+                         <app-progetti-team-mate></app-progetti-team-mate> 
+                    </div>
+
+                    <div class="tab-pane container active" id="informazioni">
+
+                        <div class="row">
+                            <div class="col-md-4 text-white">
+                                <h5>Telefono:</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <input bind-disabled="isDisabled" type="tel" style="color: #0f1721;"
+                                    value="{{teamMate.numero_telefono}}" name="numero_telefono"
+                                    [(ngModel)]="teamMate.numero_telefono" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 text-white">
+                                <h5>Città:</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <input bind-disabled="isDisabled" type="text" style="color: black;" cols="40"
+                                    value="{{teamMate.citta}}" name="citta" [(ngModel)]="teamMate.citta" required>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 text-white">
+                                <h5>Email</h5>
+                            </div>
+                            <div class="col-md-8">
+                                <input bind-disabled="isDisabled" type="text" style="color: black;" cols="40"
+                                    value="{{email}}" name="email" [(ngModel)]="email" required>
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-secondary"
+                                    (click)="modificaProfilo()">{{tastoModifica}}</button>
+                            </div>
+                            <br>
+                            <br>
+                            <div class="col-md-4">
+                                <button *ngIf="isDisabled==false"  class="btn btn-secondary" (click)="modificaPassword()">Cambia Password</button>
+                            </div>
+
+                        </div>
+
+                        <br>
+
+                    </div>
+
+                    <!-- Aggiungere qui altri contenuti dei tab -->
+                </div>
+
+                <div *ngIf="aggProgetto==false" class="tab-content">
+
+                    <div class="tab-pane container active">
+
+                        <app-progetto></app-progetto>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

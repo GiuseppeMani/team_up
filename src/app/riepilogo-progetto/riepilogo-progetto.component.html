@@ -1,0 +1,164 @@
+<html>
+
+<head></head>
+
+<body>
+    <div class="container">
+        <div *ngFor="let progetto of progetti" class="row">
+            <br>
+            <br>
+            <div class="col-md-12">
+                <div class="card">
+                    <h5 class="card-header" style="background-color: #223449; color: white;">{{progetto.nome}}
+                        <p *ngIf="progetto.stato === 'aperto'" class="text-success font-italic font-weight-light">
+                            {{progetto.stato}}
+                        </p>
+                        <p *ngIf="progetto.stato === 'chiuso'" class="text-danger font-italic font-weight-light">
+                            {{progetto.stato}}
+                        </p>
+                    </h5>
+
+                    <div class="card-body">
+
+                        <!-- TABS  -->
+                        <ul class="nav nav-tabs" id="{{progetto.nome}}">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab"
+                                    (click)="changeTabToDes(progetto.idProgetto)"
+                                    href="#{{progetto.id_descrizione}}">Descrizione</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" (click)="changeTabToRiep(progetto.idProgetto)"
+                                    href="#{{progetto.id_riepilogo}}">Riepilogo</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" (click)="mostraDescrizione(progetto.idProgetto)"
+                                    href="#{{progetto.id_candidatura}}">Candidature</a>
+                            </li>
+                        </ul>
+
+                        <!-- CONTENUTO CARD -->
+
+                        <div class="tab-content ">
+                            <div *ngIf="tab === progetto.id_descrizione" class="tab-pane fade active show"
+                                id="{{progetto.id_descrizione}}">
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-7 ">
+                                        <a class="font-weight-bold">Genere:</a> <a> {{progetto.genere}}</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10 ">
+                                        <a class="font-weight-bold">Descrizione:</a> <a> {{progetto.descrizione}}</a>
+                                    </div>
+                                    <div class="col-md-7">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a class="font-weight-bold">Numero partecipanti:</a> <a>
+                                            {{progetto.num_teamMate}}/{{progetto.num_partecipanti}}</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <a class="font-weight-bold">Data:</a> <a> {{progetto.dataProgetto}}</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="ml-auto w-25">
+                                        <button *ngIf="progetto.stato === 'aperto' && conferma === false"
+                                            (click)="chiudiProgetto(progetto.idProgetto)" type="button"
+                                            class="btn btn-secondary">Chiudi Progetto</button>
+                                        <a *ngIf="conferma === true" class="font-weight-bold text-danger">Progetto
+                                            chiuso correttamente</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+
+                            <div *ngIf="tab === progetto.id_riepilogo" class="tab-pane fade"
+                                id="{{progetto.id_riepilogo}}">
+                                <div class="row">
+                                    <div class="col-md-4 ">
+                                        <a class="font-weight-bold">Avanzamento Progetto:</a>
+                                    </div>
+
+                                    <div class="col-md-8">
+                                        <textarea bind-disabled="isDisabled" rows="6" cols="40" type="text"
+                                            style="color: black;" placeholder="Modifica con una breve descrizione"
+                                            value="{{riepilogo.AvanzamentoProgetto}}" name="AvanzamentoProgetto"
+                                            [(ngModel)]="riepilogo.AvanzamentoProgetto" required>
+                                        </textarea>
+                                    </div>
+
+                                </div>
+
+                                <br>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <a class="font-weight-bold"> Data:</a>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <a>{{dataRiepilogo}}</a>
+                                    </div>
+                                </div>
+
+                                <br>
+
+                                <div class="row">
+
+                                    <div class="col-md-2">
+                                        <button *ngIf="progetto.stato === 'aperto'" type="button"
+                                            class="btn btn-secondary"
+                                            (click)="modificaRiepilogo(progetto.idProgetto)">{{tastoModifica}}</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div *ngIf="tab === progetto.id_candidatura" class="tab-pane fade"
+                                id="{{progetto.id_candidatura}}">
+
+                                <div *ngFor="let partecipante of partecipanti" class="row">
+                                    <div class="col-md-7 ">
+                                        
+                                        <a class="font-weight-bold">{{partecipante.nome}} </a>
+                                        <a class="font-weight-bold">{{partecipante.cognome}} </a>
+
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <button  class="btn btn-secondary" (click)="accettaCandidato(progetto.idProgetto, partecipante.idPartencipante)">Accetta</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <button  class="btn btn-secondary" (click)="rifiutaCandidato(progetto.idProgetto,partecipante.idPartencipante)">Rifiuta</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    
+                </div>
+
+            </div>
+
+        </div>
+</body>
+
+</html>

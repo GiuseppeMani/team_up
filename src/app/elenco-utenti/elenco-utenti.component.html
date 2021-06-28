@@ -1,0 +1,29 @@
+<div class="b">
+    <h2>Team mates</h2>
+    <br>
+    <br>
+</div>
+<div>
+    <div class="container" *ngFor="let utente of utenti">
+        <div class="card">
+            <h5 class="card-header" style="background-color: #223449; color: white;">Team mate: {{utente.nome}} {{utente.cognome}}</h5>
+            <div class="card-body">
+                <ul>
+                    <li>
+                        Telefono: {{utente.num_telefono}}
+                    </li>
+                    <li>
+                        Città: {{utente.citta}}
+                    </li>
+                </ul>
+
+                <div class="ml-auto w-25">   
+                    <button type="submit" class="btn btn-secondary" (click)="eliminaTeamMate(utente.idTeamMate)">Elimina</button>
+                </div>
+
+            </div>
+            <br>
+        </div>
+        <br>
+    </div>
+</div>

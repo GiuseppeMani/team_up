@@ -1,0 +1,70 @@
+    <div class="row">
+
+        <!-- NOME PROGETTO -->
+        <div class="col-md-4 text-white">
+            <h5>Nome Progetto: </h5>
+        </div>
+
+        <div class="col-md-10">
+            <input bind-disabled="false" type="text" style="color: black;" cols="40" name="nome"
+                [(ngModel)]="progetto.nome" required>
+        </div>
+
+        <!-- DESCRIZIONE -->
+
+        <div class="col-md-4 text-white">
+            <h5>Descrizione: </h5>
+        </div>
+
+        <div class="col-md-10">
+            <textarea rows="10" cols="50" type="text" style="color: black;" placeholder="Descrizione Progetto"
+                value="{{progetto.descrizione}}" name="descrizione" [(ngModel)]="progetto.descrizione" required>
+        </textarea>
+        </div>
+
+        <!-- GENERE -->
+
+        <div class="col-md-4 text-white">
+            <h5>Genere: </h5>
+        </div>
+
+        <div class="col-md-10">
+            <div class="form-group">
+                <select class="form-control" name="genere" [(ngModel)]="progetto.genere" required>
+                    <option>Informatica</option>
+                    <option>Sport</option>
+                    <option>Musica</option>
+                    <option>Intrattenimento</option>
+                    <option>Altro</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- NUMERO PARTECIPANTI -->
+
+        <div class="col-md-4 text-white">
+            <h5>Numero Partecipanti: </h5>
+        </div>
+
+        <div class="col-md-10">
+            <input bind-disabled="false" type="number" min="1" style="color: black;" cols="40" name="num_partecipanti"
+                [(ngModel)]="progetto.num_partecipanti" required>
+        </div>
+
+        <br><br>
+
+        <div class="col-md-4" >
+            <button class="btn btn-secondary" (click)="addProgetto()">
+                Salva
+            </button>
+        </div>
+
+        <div class="col-md-4 ml-auto" >
+            <button class="btn btn-secondary" (click)="tornaIndietro()">
+                Indietro
+            </button>
+        </div>
+
+            <br><br> 
+
+    </div>

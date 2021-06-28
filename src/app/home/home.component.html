@@ -1,0 +1,49 @@
+<html>
+
+<head></head>
+
+<body>
+    <div class="b">
+        <h2>Progetti</h2>
+        <br>
+        <br>
+    </div>
+    <div>
+        <div class="container" *ngFor="let progetto of progetti">
+            <div *ngIf="progetto.stato === 'aperto'" class="card">
+                <h5 class="card-header" style="background-color: #223449; color: white;">{{progetto.nome}}
+                    <h6 class="text-white">Team Leader: {{progetto.nomeTeamLeader}} {{progetto.cognomeTeamLeader}}</h6>
+                </h5>
+                <div class="card-body">
+                    <ul>
+                        <li>
+                            Genere: {{progetto.genere}}
+                        </li>
+                        <li>
+                            Descrizione: {{progetto.descrizione}}
+                        </li>
+                        <li>
+                            Numero Partecipanti: {{progetto.num_teamMate}}/{{progetto.num_partecipanti}}
+                        </li>
+                    </ul>
+
+                    <div class="ml-auto w-25">
+
+                        <button *ngIf="progetto.partecipa === true && logged === true" type="submit"
+                            class="btn btn-secondary" (click)="partecipaProgetto(progetto.idProgetto)">Partecipa
+                        </button>
+                        
+                        <button *ngIf="logged === false" type="submit" class="btn btn-secondary" (click) = "eliminaProgetto(progetto.idProgetto)">Elimina</button>
+                    
+                    </div>
+
+                </div>
+                <br>
+            </div>
+            <br>
+        </div>
+    </div>
+
+</body>
+
+</html>
